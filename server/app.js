@@ -40,20 +40,9 @@ app.get("/",(req, res, next)=>{
 })
 
 // routes
-const postRoute = require('./api/routes/posts');
-app.use('/posts', postRoute);
 
-const userRoute = require('./api/routes/user');
+const userRoute = require('./user');
 app.use('/user', userRoute);
-
-const commentRoute = require('./api/routes/comments');
-const auth = require('./api/middleware/auth');
-app.use('/comments', commentRoute);
-
-app.get('/test', auth,(req, res)=>{
-    const user= req.userData;
-    res.status(200).json({message: "user Received", user: user});
-})
 
 
 
